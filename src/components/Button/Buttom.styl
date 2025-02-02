@@ -1,0 +1,94 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
+size(height, verPad, horPad, gap = 0)
+    height: height
+    padding: verPad horPad
+    border-radius: horPad
+    gap: gap
+    
+
+.button
+    font-family: Roboto, sans-serif
+    line-height: 1.75
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100%
+    border: 0
+    &--primary
+        background-color: #FF7700
+        color: #fff
+
+    &--secondary
+        background-color: #8366561F
+        color: #2E2F33
+
+    &--primary .loader
+        stroke: #fff
+    &--secondary .loader
+        stroke: #2E2F33
+    &--28
+        size(28px, 6px, 10px, 4px)
+    &--36
+        size(36px, 8px, 12px, 6px)
+    &--56
+        size(56px, 16px, 16px, 8px)
+        
+    &:before
+        content: ""
+        width: 100%
+        height: 100%
+        left: 0
+        position: absolute
+        opacity: 12%
+        transform: translateX(-100%)
+        border-radius: inherit
+    &:hover 
+        *
+            transform: scale(105%)
+            transition: all cubic-bezier(0, -0.3, 0.5, 1.3);   
+            transition-duration: 500 ms;
+        &:before
+            transform: translateX(0)
+            transition: all cubic-bezier(0, -0.3, 0.5, 1.3);   
+            transition-duration: 500 ms;
+
+    &--loading
+        >:not(svg)
+            opacity: 0
+            transition: all cubic-bezier(0, -0.3, 0.5, 1.3);   
+            transition-duration: 500 ms;
+    &--loading .loader   
+            display: block
+            position: absolute
+
+    &:disabled
+        opacity: 36%
+    &:disabled&:hover
+        *
+            transform: none
+        &:before   
+            opacity: 0
+
+    &:active
+        &:before
+            opacity: 20%
+        *
+            transform: scale(95%)
+            transition: all cubic-bezier(0, -0.3, 0.5, 1.3);
+            transition-duration: 500 ms;
+
+    &:focus
+        outline: 3px solid #0099FF
+        outline-offset: 4px
+
+    &--primary&:before 
+        background-color: #fff
+    &--secondary&:before 
+        background-color: #2E2F33
+
+.loader 
+    display: none
+    width: 50%
+    height: 50%

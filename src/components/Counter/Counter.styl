@@ -1,0 +1,81 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
+stroke()
+    border: arguments solid black
+
+size(dim, pad = 0)
+    width: dim
+    height: dim
+    font-size: dim
+    if dim > 12
+        min-height: dim
+
+
+.counter 
+    display: flex
+    align-items: center
+    justify-content: center
+    position: relative
+    box-sizing: border-box
+    font-family: Roboto, sans-serif
+    border-radius: 50%
+
+    &--8
+        size(8px)
+    &--12
+        size(12px)
+    &--16
+        size(16px, 4px)
+    &--20
+        size(20px, 4px)
+    &--24
+        size(24px, 6px)
+
+    &--8&--stroke
+        stroke(1px)
+    &--12&--stroke
+        stroke(2px)
+    &--16&--stroke
+        stroke(2px)
+    &--20&--stroke
+       stroke(2px)
+    &--24&--stroke
+        stroke(3px)
+    
+    &--pulse&:before, &--pulse&:after
+        content: ""
+        background-color: inherit
+        position: absolute
+        border-radius: 50%
+        z-index: -1
+        top: 0
+        left: 0
+        animation-name: scale-fade;
+        animation-iteration-count: infinite; 
+        animation-duration: 2s;
+
+    &--8&:before, &--8&:after
+        size(8px)
+    
+    &--12&:before, &--12&:after
+        size(12px)
+
+    &--pulse&:after 
+        animation-delay: 0.25s
+
+@keyframes scale-fade 
+  0% 
+    opacity: 0.5
+    transform: scale(1)
+  
+  50% 
+    opacity: 0
+    transform: scale(3)
+  
+  100% 
+    opacity: 0
+    transform: scale(3)
+  
+
+    
+
